@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shifttransactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Shift start time</th>
+      <th>Shift end time</th>
+      <th>Actual working hours</th>
+      <th>Shift no</th>
+      <th>Isactive</th>
+      <th>Deleted at</th>
+      <th>Shift start time dummy</th>
+      <th>Shift end time dummy</th>
+      <th>Actual working hours dummy</th>
+      <th>Actual working without break</th>
+      <th>Shift</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shifttransactions.each do |shifttransaction| %>
+      <tr>
+        <td><%= shifttransaction.shift_start_time %></td>
+        <td><%= shifttransaction.shift_end_time %></td>
+        <td><%= shifttransaction.actual_working_hours %></td>
+        <td><%= shifttransaction.shift_no %></td>
+        <td><%= shifttransaction.isactive %></td>
+        <td><%= shifttransaction.deleted_at %></td>
+        <td><%= shifttransaction.shift_start_time_dummy %></td>
+        <td><%= shifttransaction.shift_end_time_dummy %></td>
+        <td><%= shifttransaction.actual_working_hours_dummy %></td>
+        <td><%= shifttransaction.actual_working_without_break %></td>
+        <td><%= shifttransaction.shift %></td>
+        <td><%= link_to 'Show', shifttransaction %></td>
+        <td><%= link_to 'Edit', edit_shifttransaction_path(shifttransaction) %></td>
+        <td><%= link_to 'Destroy', shifttransaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shifttransaction', new_shifttransaction_path %>

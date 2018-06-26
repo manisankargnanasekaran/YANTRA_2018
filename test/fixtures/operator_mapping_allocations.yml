@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-06-04
+  operator: one
+  operator_allocation: one
+  is_active: false
+  deleted_at: 2018-06-04 18:00:35
+
+two:
+  date: 2018-06-04
+  operator: two
+  operator_allocation: two
+  is_active: false
+  deleted_at: 2018-06-04 18:00:35

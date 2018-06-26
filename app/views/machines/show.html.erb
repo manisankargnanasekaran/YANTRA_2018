@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Machine name:</strong>
+  <%= @machine.machine_name %>
+</p>
+
+<p>
+  <strong>Machine model:</strong>
+  <%= @machine.machine_model %>
+</p>
+
+<p>
+  <strong>Machine serial no:</strong>
+  <%= @machine.machine_serial_no %>
+</p>
+
+<p>
+  <strong>Machine type:</strong>
+  <%= @machine.machine_type %>
+</p>
+
+<p>
+  <strong>Isactive:</strong>
+  <%= @machine.isactive %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @machine.deleted_at %>
+</p>
+
+<p>
+  <strong>Machine ip:</strong>
+  <%= @machine.machine_ip %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @machine.unit %>
+</p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @machine.device_id %>
+</p>
+
+<p>
+  <strong>Tenant:</strong>
+  <%= @machine.tenant %>
+</p>
+
+<%= link_to 'Edit', edit_machine_path(@machine) %> |
+<%= link_to 'Back', machines_path %>

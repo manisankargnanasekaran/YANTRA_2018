@@ -1,0 +1,37 @@
+<%= form_with(model: ethernet_log, local: true) do |form| %>
+  <% if ethernet_log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ethernet_log.errors.count, "error") %> prohibited this ethernet_log from being saved:</h2>
+
+      <ul>
+      <% ethernet_log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.datetime_select :date, id: :ethernet_log_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :ethernet_log_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :machine_id %>
+    <%= form.text_field :machine_id, id: :ethernet_log_machine_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tenant_id %>
+    <%= form.text_field :tenant_id, id: :ethernet_log_tenant_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

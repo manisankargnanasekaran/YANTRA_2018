@@ -1,0 +1,67 @@
+<%= form_with(model: machine, local: true) do |form| %>
+  <% if machine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
+
+      <ul>
+      <% machine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :machine_name %>
+    <%= form.text_field :machine_name, id: :machine_machine_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :machine_model %>
+    <%= form.text_field :machine_model, id: :machine_machine_model %>
+  </div>
+
+  <div class="field">
+    <%= form.label :machine_serial_no %>
+    <%= form.text_field :machine_serial_no, id: :machine_machine_serial_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :machine_type %>
+    <%= form.text_field :machine_type, id: :machine_machine_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isactive %>
+    <%= form.check_box :isactive, id: :machine_isactive %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deleted_at %>
+    <%= form.datetime_select :deleted_at, id: :machine_deleted_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :machine_ip %>
+    <%= form.text_field :machine_ip, id: :machine_machine_ip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :unit %>
+    <%= form.text_field :unit, id: :machine_unit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :device_id %>
+    <%= form.text_field :device_id, id: :machine_device_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tenant_id %>
+    <%= form.text_field :tenant_id, id: :machine_tenant_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

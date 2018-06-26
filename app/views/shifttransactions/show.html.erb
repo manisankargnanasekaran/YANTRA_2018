@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Shift start time:</strong>
+  <%= @shifttransaction.shift_start_time %>
+</p>
+
+<p>
+  <strong>Shift end time:</strong>
+  <%= @shifttransaction.shift_end_time %>
+</p>
+
+<p>
+  <strong>Actual working hours:</strong>
+  <%= @shifttransaction.actual_working_hours %>
+</p>
+
+<p>
+  <strong>Shift no:</strong>
+  <%= @shifttransaction.shift_no %>
+</p>
+
+<p>
+  <strong>Isactive:</strong>
+  <%= @shifttransaction.isactive %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @shifttransaction.deleted_at %>
+</p>
+
+<p>
+  <strong>Shift start time dummy:</strong>
+  <%= @shifttransaction.shift_start_time_dummy %>
+</p>
+
+<p>
+  <strong>Shift end time dummy:</strong>
+  <%= @shifttransaction.shift_end_time_dummy %>
+</p>
+
+<p>
+  <strong>Actual working hours dummy:</strong>
+  <%= @shifttransaction.actual_working_hours_dummy %>
+</p>
+
+<p>
+  <strong>Actual working without break:</strong>
+  <%= @shifttransaction.actual_working_without_break %>
+</p>
+
+<p>
+  <strong>Shift:</strong>
+  <%= @shifttransaction.shift %>
+</p>
+
+<%= link_to 'Edit', edit_shifttransaction_path(@shifttransaction) %> |
+<%= link_to 'Back', shifttransactions_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @ethernet_log.date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @ethernet_log.status %>
+</p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @ethernet_log.machine %>
+</p>
+
+<p>
+  <strong>Tenant:</strong>
+  <%= @ethernet_log.tenant %>
+</p>
+
+<%= link_to 'Edit', edit_ethernet_log_path(@ethernet_log) %> |
+<%= link_to 'Back', ethernet_logs_path %>

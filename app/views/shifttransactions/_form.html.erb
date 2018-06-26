@@ -1,0 +1,72 @@
+<%= form_with(model: shifttransaction, local: true) do |form| %>
+  <% if shifttransaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shifttransaction.errors.count, "error") %> prohibited this shifttransaction from being saved:</h2>
+
+      <ul>
+      <% shifttransaction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :shift_start_time %>
+    <%= form.text_field :shift_start_time, id: :shifttransaction_shift_start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shift_end_time %>
+    <%= form.text_field :shift_end_time, id: :shifttransaction_shift_end_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :actual_working_hours %>
+    <%= form.text_field :actual_working_hours, id: :shifttransaction_actual_working_hours %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shift_no %>
+    <%= form.number_field :shift_no, id: :shifttransaction_shift_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isactive %>
+    <%= form.check_box :isactive, id: :shifttransaction_isactive %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deleted_at %>
+    <%= form.datetime_select :deleted_at, id: :shifttransaction_deleted_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shift_start_time_dummy %>
+    <%= form.time_select :shift_start_time_dummy, id: :shifttransaction_shift_start_time_dummy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shift_end_time_dummy %>
+    <%= form.time_select :shift_end_time_dummy, id: :shifttransaction_shift_end_time_dummy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :actual_working_hours_dummy %>
+    <%= form.time_select :actual_working_hours_dummy, id: :shifttransaction_actual_working_hours_dummy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :actual_working_without_break %>
+    <%= form.text_field :actual_working_without_break, id: :shifttransaction_actual_working_without_break %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shift_id %>
+    <%= form.text_field :shift_id, id: :shifttransaction_shift_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

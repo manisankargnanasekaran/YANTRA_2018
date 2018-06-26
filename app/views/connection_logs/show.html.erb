@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @connection_log.date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @connection_log.status %>
+</p>
+
+<p>
+  <strong>Tenant:</strong>
+  <%= @connection_log.tenant %>
+</p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @connection_log.machine %>
+</p>
+
+<%= link_to 'Edit', edit_connection_log_path(@connection_log) %> |
+<%= link_to 'Back', connection_logs_path %>

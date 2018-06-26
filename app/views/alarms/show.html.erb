@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Alarm type:</strong>
+  <%= @alarm.alarm_type %>
+</p>
+
+<p>
+  <strong>Alarm number:</strong>
+  <%= @alarm.alarm_number %>
+</p>
+
+<p>
+  <strong>Alarm message:</strong>
+  <%= @alarm.alarm_message %>
+</p>
+
+<p>
+  <strong>Emergency:</strong>
+  <%= @alarm.emergency %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @alarm.deleted_at %>
+</p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @alarm.machine %>
+</p>
+
+<%= link_to 'Edit', edit_alarm_path(@alarm) %> |
+<%= link_to 'Back', alarms_path %>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shift_start_time: MyString
+  shift_end_time: MyString
+  actual_working_hours: MyString
+  shift_no: 1
+  isactive: false
+  deleted_at: 2018-05-25 00:09:56
+  shift_start_time_dummy: 2018-05-25 00:09:56
+  shift_end_time_dummy: 2018-05-25 00:09:56
+  actual_working_hours_dummy: 2018-05-25 00:09:56
+  actual_working_without_break: MyString
+  shift: one
+
+two:
+  shift_start_time: MyString
+  shift_end_time: MyString
+  actual_working_hours: MyString
+  shift_no: 1
+  isactive: false
+  deleted_at: 2018-05-25 00:09:56
+  shift_start_time_dummy: 2018-05-25 00:09:56
+  shift_end_time_dummy: 2018-05-25 00:09:56
+  actual_working_hours_dummy: 2018-05-25 00:09:56
+  actual_working_without_break: MyString
+  shift: two

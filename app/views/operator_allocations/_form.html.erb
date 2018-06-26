@@ -1,0 +1,52 @@
+<%= form_with(model: operator_allocation, local: true) do |form| %>
+  <% if operator_allocation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(operator_allocation.errors.count, "error") %> prohibited this operator_allocation from being saved:</h2>
+
+      <ul>
+      <% operator_allocation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :operator_id %>
+    <%= form.text_field :operator_id, id: :operator_allocation_operator_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shifttransaction_id %>
+    <%= form.text_field :shifttransaction_id, id: :operator_allocation_shifttransaction_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :machine_id %>
+    <%= form.text_field :machine_id, id: :operator_allocation_machine_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tenant_id %>
+    <%= form.text_field :tenant_id, id: :operator_allocation_tenant_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :operator_allocation_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :from_date %>
+    <%= form.date_select :from_date, id: :operator_allocation_from_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :to_date %>
+    <%= form.date_select :to_date, id: :operator_allocation_to_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

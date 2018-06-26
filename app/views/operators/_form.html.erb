@@ -1,0 +1,47 @@
+<%= form_with(model: operator, local: true) do |form| %>
+  <% if operator.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(operator.errors.count, "error") %> prohibited this operator from being saved:</h2>
+
+      <ul>
+      <% operator.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :operator_name %>
+    <%= form.text_field :operator_name, id: :operator_operator_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :operator_spec_id %>
+    <%= form.text_field :operator_spec_id, id: :operator_operator_spec_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :operator_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_active %>
+    <%= form.check_box :is_active, id: :operator_is_active %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deleted_at %>
+    <%= form.datetime_select :deleted_at, id: :operator_deleted_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tenant_id %>
+    <%= form.text_field :tenant_id, id: :operator_tenant_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  email_id: MyString
+  password_digest: MyString
+  phone_number: MyString
+  player_id: MyString
+  remarks: MyString
+  isactive: false
+  deleted_at: 2018-05-24 20:05:44
+  role: one
+  user_type: one
+
+two:
+  first_name: MyString
+  last_name: MyString
+  email_id: MyString
+  password_digest: MyString
+  phone_number: MyString
+  player_id: MyString
+  remarks: MyString
+  isactive: false
+  deleted_at: 2018-05-24 20:05:44
+  role: two
+  user_type: two

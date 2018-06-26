@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  alarm_type: 1
+  alarm_number: 1
+  alarm_message: MyString
+  emergency: 1
+  deleted_at: 2018-05-28 14:33:45
+  machine: one
+
+two:
+  alarm_type: 1
+  alarm_number: 1
+  alarm_message: MyString
+  emergency: 1
+  deleted_at: 2018-05-28 14:33:45
+  machine: two

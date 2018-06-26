@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  machine_name: MyString
+  machine_model: MyString
+  machine_serial_no: MyString
+  machine_type: MyString
+  isactive: false
+  deleted_at: 2018-05-25 01:01:26
+  machine_ip: MyString
+  unit: MyString
+  device_id: MyString
+  tenant: one
+
+two:
+  machine_name: MyString
+  machine_model: MyString
+  machine_serial_no: MyString
+  machine_type: MyString
+  isactive: false
+  deleted_at: 2018-05-25 01:01:26
+  machine_ip: MyString
+  unit: MyString
+  device_id: MyString
+  tenant: two

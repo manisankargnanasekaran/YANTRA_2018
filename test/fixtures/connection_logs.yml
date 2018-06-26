@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-05-28 14:38:19
+  status: MyString
+  tenant: one
+  machine: one
+
+two:
+  date: 2018-05-28 14:38:19
+  status: MyString
+  tenant: two
+  machine: two

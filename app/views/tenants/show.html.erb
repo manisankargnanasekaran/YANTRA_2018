@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tenant name:</strong>
+  <%= @tenant.tenant_name %>
+</p>
+
+<p>
+  <strong>Address line1:</strong>
+  <%= @tenant.address_line1 %>
+</p>
+
+<p>
+  <strong>Address line2:</strong>
+  <%= @tenant.address_line2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @tenant.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @tenant.state %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @tenant.country %>
+</p>
+
+<p>
+  <strong>Pincode:</strong>
+  <%= @tenant.pincode %>
+</p>
+
+<p>
+  <strong>Active by:</strong>
+  <%= @tenant.active_by %>
+</p>
+
+<p>
+  <strong>Isactive:</strong>
+  <%= @tenant.isactive %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @tenant.deleted_at %>
+</p>
+
+<%= link_to 'Edit', edit_tenant_path(@tenant) %> |
+<%= link_to 'Back', tenants_path %>

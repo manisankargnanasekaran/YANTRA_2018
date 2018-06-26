@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Operator:</strong>
+  <%= @operator_allocation.operator %>
+</p>
+
+<p>
+  <strong>Shifttransaction:</strong>
+  <%= @operator_allocation.shifttransaction %>
+</p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @operator_allocation.machine %>
+</p>
+
+<p>
+  <strong>Tenant:</strong>
+  <%= @operator_allocation.tenant %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @operator_allocation.description %>
+</p>
+
+<p>
+  <strong>From date:</strong>
+  <%= @operator_allocation.from_date %>
+</p>
+
+<p>
+  <strong>To date:</strong>
+  <%= @operator_allocation.to_date %>
+</p>
+
+<%= link_to 'Edit', edit_operator_allocation_path(@operator_allocation) %> |
+<%= link_to 'Back', operator_allocations_path %>

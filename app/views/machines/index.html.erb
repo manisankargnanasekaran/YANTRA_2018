@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Machines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Machine name</th>
+      <th>Machine model</th>
+      <th>Machine serial no</th>
+      <th>Machine type</th>
+      <th>Isactive</th>
+      <th>Deleted at</th>
+      <th>Machine ip</th>
+      <th>Unit</th>
+      <th>Device</th>
+      <th>Tenant</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @machines.each do |machine| %>
+      <tr>
+        <td><%= machine.machine_name %></td>
+        <td><%= machine.machine_model %></td>
+        <td><%= machine.machine_serial_no %></td>
+        <td><%= machine.machine_type %></td>
+        <td><%= machine.isactive %></td>
+        <td><%= machine.deleted_at %></td>
+        <td><%= machine.machine_ip %></td>
+        <td><%= machine.unit %></td>
+        <td><%= machine.device_id %></td>
+        <td><%= machine.tenant %></td>
+        <td><%= link_to 'Show', machine %></td>
+        <td><%= link_to 'Edit', edit_machine_path(machine) %></td>
+        <td><%= link_to 'Destroy', machine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Machine', new_machine_path %>

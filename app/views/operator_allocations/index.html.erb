@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Operator Allocations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Shifttransaction</th>
+      <th>Machine</th>
+      <th>Tenant</th>
+      <th>Description</th>
+      <th>From date</th>
+      <th>To date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operator_allocations.each do |operator_allocation| %>
+      <tr>
+        <td><%= operator_allocation.operator %></td>
+        <td><%= operator_allocation.shifttransaction %></td>
+        <td><%= operator_allocation.machine %></td>
+        <td><%= operator_allocation.tenant %></td>
+        <td><%= operator_allocation.description %></td>
+        <td><%= operator_allocation.from_date %></td>
+        <td><%= operator_allocation.to_date %></td>
+        <td><%= link_to 'Show', operator_allocation %></td>
+        <td><%= link_to 'Edit', edit_operator_allocation_path(operator_allocation) %></td>
+        <td><%= link_to 'Destroy', operator_allocation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Operator Allocation', new_operator_allocation_path %>
