@@ -1,4 +1,5 @@
 class Shift < ApplicationRecord
+  acts_as_paranoid
   belongs_to :tenant
   has_many :shifttransactions
 
@@ -17,7 +18,7 @@ class Shift < ApplicationRecord
 		      if ll.shift_start_time.to_time < Time.now && ll.shift_end_time.to_time + 1.day > Time.now
 		        shift = ll
 		      end 
-		      end
+		    end
 		    else
 		      if ll.shift_start_time.to_time < Time.now && ll.shift_end_time.to_time > Time.now
 		        shift = ll

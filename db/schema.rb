@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180604123035) do
+ActiveRecord::Schema.define(version: 20180627055816) do
 
   create_table "alarms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "alarm_type"
@@ -47,6 +47,34 @@ ActiveRecord::Schema.define(version: 20180604123035) do
     t.datetime "updated_at", null: false
     t.index ["machine_id"], name: "index_ethernet_logs_on_machine_id"
     t.index ["tenant_id"], name: "index_ethernet_logs_on_tenant_id"
+  end
+
+  create_table "hour_reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date "date"
+    t.string "hour"
+    t.integer "shift_no"
+    t.string "time"
+    t.string "program_number"
+    t.string "job_description"
+    t.integer "parts_produced"
+    t.string "cycle_time"
+    t.string "loading_and_unloading_time"
+    t.string "ideal_time"
+    t.string "total_downtime"
+    t.string "acutal_running"
+    t.string "acutal_working_hours"
+    t.string "utilization"
+    t.string "single_parts"
+    t.bigint "shift_id"
+    t.bigint "operator_id"
+    t.bigint "machine_id"
+    t.bigint "tenant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["machine_id"], name: "index_hour_reports_on_machine_id"
+    t.index ["operator_id"], name: "index_hour_reports_on_operator_id"
+    t.index ["shift_id"], name: "index_hour_reports_on_shift_id"
+    t.index ["tenant_id"], name: "index_hour_reports_on_tenant_id"
   end
 
   create_table "machine_daily_logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -185,6 +213,60 @@ ActiveRecord::Schema.define(version: 20180604123035) do
     t.index ["tenant_id"], name: "index_operators_on_tenant_id"
   end
 
+  create_table "program_reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date "date"
+    t.integer "shift_no"
+    t.string "time"
+    t.string "program_number"
+    t.string "job_description"
+    t.integer "parts_produced"
+    t.string "cycle_time"
+    t.string "loading_and_unloading_time"
+    t.string "ideal_time"
+    t.string "total_downtime"
+    t.string "acutal_running"
+    t.string "acutal_working_hours"
+    t.string "utilization"
+    t.string "single_parts"
+    t.bigint "shift_id"
+    t.bigint "operator_id"
+    t.bigint "machine_id"
+    t.bigint "tenant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["machine_id"], name: "index_program_reports_on_machine_id"
+    t.index ["operator_id"], name: "index_program_reports_on_operator_id"
+    t.index ["shift_id"], name: "index_program_reports_on_shift_id"
+    t.index ["tenant_id"], name: "index_program_reports_on_tenant_id"
+  end
+
+  create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date "date"
+    t.integer "shift_no"
+    t.string "time"
+    t.string "program_number"
+    t.string "job_description"
+    t.integer "parts_produced"
+    t.string "cycle_time"
+    t.string "loading_and_unloading_time"
+    t.string "ideal_time"
+    t.string "total_downtime"
+    t.string "acutal_running"
+    t.string "acutal_working_hours"
+    t.string "utilization"
+    t.string "single_parts"
+    t.bigint "shift_id"
+    t.bigint "operator_id"
+    t.bigint "machine_id"
+    t.bigint "tenant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["machine_id"], name: "index_reports_on_machine_id"
+    t.index ["operator_id"], name: "index_reports_on_operator_id"
+    t.index ["shift_id"], name: "index_reports_on_shift_id"
+    t.index ["tenant_id"], name: "index_reports_on_tenant_id"
+  end
+
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "role_name"
     t.string "role_code"
@@ -273,6 +355,10 @@ ActiveRecord::Schema.define(version: 20180604123035) do
   add_foreign_key "connection_logs", "tenants"
   add_foreign_key "ethernet_logs", "machines"
   add_foreign_key "ethernet_logs", "tenants"
+  add_foreign_key "hour_reports", "machines"
+  add_foreign_key "hour_reports", "operators"
+  add_foreign_key "hour_reports", "shifts"
+  add_foreign_key "hour_reports", "tenants"
   add_foreign_key "machine_daily_logs", "machines"
   add_foreign_key "machine_logs", "machines"
   add_foreign_key "machine_monthly_logs", "machines"
@@ -284,6 +370,14 @@ ActiveRecord::Schema.define(version: 20180604123035) do
   add_foreign_key "operator_mapping_allocations", "operator_allocations"
   add_foreign_key "operator_mapping_allocations", "operators"
   add_foreign_key "operators", "tenants"
+  add_foreign_key "program_reports", "machines"
+  add_foreign_key "program_reports", "operators"
+  add_foreign_key "program_reports", "shifts"
+  add_foreign_key "program_reports", "tenants"
+  add_foreign_key "reports", "machines"
+  add_foreign_key "reports", "operators"
+  add_foreign_key "reports", "shifts"
+  add_foreign_key "reports", "tenants"
   add_foreign_key "shifts", "tenants"
   add_foreign_key "shifttransactions", "shifts"
   add_foreign_key "users", "roles"
