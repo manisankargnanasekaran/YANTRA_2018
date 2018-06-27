@@ -1,6 +1,6 @@
 class Machine < ApplicationRecord
   acts_as_paranoid
-  belongs_to :tenant
+  belongs_to :tenant, -> { with_deleted }
 
   def self.parts_count_calculation(machine_log)
     part_count=[]

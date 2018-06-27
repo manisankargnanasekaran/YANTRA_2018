@@ -1,5 +1,5 @@
 class MachineDailyLog < ApplicationRecord
-  belongs_to :machine
+  belongs_to :machine, -> { with_deleted }
 
 
    def self.dashboard_status(params) # used
