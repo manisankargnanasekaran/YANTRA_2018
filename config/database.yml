@@ -10,7 +10,8 @@ default: &default
  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   #timeout: 5000
  username: root
- password: root@123
+ #password: root@123
+ password: ror01
 development:
   <<: *default
   database: Yantra_development_2018
