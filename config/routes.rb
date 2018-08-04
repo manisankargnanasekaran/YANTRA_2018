@@ -3,10 +3,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'auth/register', to: 'sessions#register'
       post 'auth/login', to: 'sessions#login'
+      get 'logout', to: 'sessions#logout'
+      
       get 'test', to: 'sessions#test'
       get 'start_end_time', to: 'sessions#start_end_time'
 	    get 'sessions/test'
-	    get 'sessions/logout'
+	    
       
       resources :operator_allocations
       resources :operators

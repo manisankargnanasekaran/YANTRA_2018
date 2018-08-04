@@ -20,9 +20,9 @@ class AuthorizeApiRequest
   end
 
   def decoded_auth_token
-    #if AuthLog.exists?(auth_token: http_auth_header)
+    if UserAuthLog.exists?(auth_token: http_auth_header)
       @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
-   # end
+    end
     #@decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
   end
 

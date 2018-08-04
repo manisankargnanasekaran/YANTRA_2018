@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_wise: false
+  month_wise: false
+  shift_wise: false
+  operator_wise: false
+  hour_wise: false
+  program_wise: false
+  email_notification: false
+  sms: false
+  notification: false
+  tenant: one
+  updated_by: MyString
+
+two:
+  date_wise: false
+  month_wise: false
+  shift_wise: false
+  operator_wise: false
+  hour_wise: false
+  program_wise: false
+  email_notification: false
+  sms: false
+  notification: false
+  tenant: two
+  updated_by: MyString

@@ -1,12 +1,15 @@
 module Api
   module V1  
     class MachinesController < ApplicationController
+       skip_before_action :authenticate_request, only: %i[index]
       before_action :set_machine, only: [:show, :edit, :update, :destroy]
 
       # GET /machines
       # GET /machines.json
       def index
-        @machines = Machine.where(tenant_id: current_tenant.id)
+        #@machines = Machine.where(tenant_id: current_tenant.id)
+        @machines = Machine.all
+        render json: @machines
       end
 
       # GET /machines/1

@@ -3,12 +3,13 @@ module Api
 	class SessionsController < ApplicationController
     skip_before_action :authenticate_request, only: %i[login register]
 	  def register
-	  	@user = Tenant.new(tenant_params)
-	      if @user.save
+	  	@tenant = Tenant.new(tenant_params)
+	      if @tenant.save
+          Setting.create(tenant_id: @tenant.id)
 	        response = { message: 'User created successfully'}
 	        render json: response, status: :created 
 	      else
-	        render json: @user.errors, status: :bad
+	        render json: @tenant.errors, status: :bad
 	      end 
 	  end
 
@@ -25,38 +26,65 @@ module Api
 	  end
 
     def start_end_time
-      unless current_shift == "No Shifttransactions at Time"
-        #shift = Shift.current_shift(current_tenant.id)
-        now = Time.now + 8.hours
-        shift = Shifttransaction.find(5)
-        date=Date.today.strftime("%Y-%m-%d")
-        if shift.shift_start_time.include?("PM") && shift.shift_end_time.include?("AM")
-            if Time.now.strftime("%p") == "AM"
-               date = (Date.today - 1).strftime("%Y-%m-%d")
-            end 
-               start_time = (date+" "+shift.shift_start_time).to_time
-               end_time = (date+" "+shift.shift_end_time).to_time+1.day        
-        elsif shift.shift_start_time.include?("AM") && shift.shift_end_time.include?("AM")
-          byebug
-         # shift.shift.day_start_time.to_time+1.day > now
-            if Time.now.strftime("%p") == "AM"
-            #if shift.shift.day_start_time.to_time > Time.now
-               date = (Date.today - 1).strftime("%Y-%m-%d")
-            end 
-               start_time = (date+" "+shift.shift_start_time).to_time+1.day
-               end_time = (date+" "+shift.shift_end_time).to_time+1.day
-        else
-              start_time = (date+" "+shift.shift_start_time).to_time
-              end_time = (date+" "+shift.shift_end_time).to_time        
-        end
+      # unless current_shift == "No Shifttransactions at Time"
+      #   #shift = Shift.current_shift(current_tenant.id)
+      #   now = Time.now + 8.hours
+      #   shift = Shifttransaction.find(5)
+      #   date=Date.today.strftime("%Y-%m-%d")
+      #   if shift.shift_start_time.include?("PM") && shift.shift_end_time.include?("AM")
+      #       if Time.now.strftime("%p") == "AM"
+      #          date = (Date.today - 1).strftime("%Y-%m-%d")
+      #       end 
+      #          start_time = (date+" "+shift.shift_start_time).to_time
+      #          end_time = (date+" "+shift.shift_end_time).to_time+1.day        
+      #   elsif shift.shift_start_time.include?("AM") && shift.shift_end_time.include?("AM")
+      #     byebug
+      #    # shift.shift.day_start_time.to_time+1.day > now
+      #       if Time.now.strftime("%p") == "AM"
+      #       #if shift.shift.day_start_time.to_time > Time.now
+      #          date = (Date.today - 1).strftime("%Y-%m-%d")
+      #       end 
+      #          start_time = (date+" "+shift.shift_start_time).to_time+1.day
+      #          end_time = (date+" "+shift.shift_end_time).to_time+1.day
+      #   else
+      #         start_time = (date+" "+shift.shift_start_time).to_time
+      #         end_time = (date+" "+shift.shift_end_time).to_time        
+      #   end
         
-        render json: {start_time: start_time, end_time: end_time}
-      else
-        render json: "test" 
+      #   render json: {start_time: start_time, end_time: end_time}
+      # else
+      #   render json: "test" 
+      # end
+      
+    date="2018-06-29"
+    tenant = Tenant.where(isactive: true).each do |tenant|
+      all_shift = tenant.shift.shifttransactions
+      all_shift.each do |shift|
+        if shift.shift_start_time.include?("PM") && shift.shift_end_time.include?("AM")
+          if Time.now.strftime("%p") == "AM"
+            date = (Date.today - 1).strftime("%Y-%m-%d")
+          end 
+          start_time = (date+" "+shift.shift_start_time).to_time
+          end_time = (date+" "+shift.shift_end_time).to_time+1.day                             
+        elsif shift.shift_start_time.include?("AM") && shift.shift_end_time.include?("AM")           
+          if Time.now.strftime("%p") == "AM"
+            date = (Date.today - 1).strftime("%Y-%m-%d")
+          end
+          start_time = (date+" "+shift.shift_start_time).to_time+1.day
+          end_time = (date+" "+shift.shift_end_time).to_time+1.day
+        else              
+          start_time = (date+" "+shift.shift_start_time).to_time
+          end_time = (date+" "+shift.shift_end_time).to_time        
+        end
       end
+    end
+  
     end
 
 	  def logout
+      token = request.headers["Authorization"].split(' ').last
+      UserAuthLog.find_by(auth_token: token).update(auth_token: "")
+      render json: {status: :success, message: "Logout successfully"}
 	  end
 
 	  private
@@ -75,6 +103,7 @@ module Api
           user_id = JsonWebToken.decode(command.result)["id"]
           user = User.find(user_id)
           user.update(player_id: params[:player_id]) if params[:player_id].present?
+          UserAuthLog.create(auth_token: command.result, user_id: user.id)
           render json: {
         	access_token: command.result,
         	message: 'Login Successful',

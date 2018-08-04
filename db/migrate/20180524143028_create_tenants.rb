@@ -10,6 +10,7 @@ class CreateTenants < ActiveRecord::Migration[5.1]
       t.string :pincode
       t.string :active_by
       t.boolean :isactive, default: false
+      t.boolean :is_tenant, default: false
       t.datetime :deleted_at
 
       t.timestamps

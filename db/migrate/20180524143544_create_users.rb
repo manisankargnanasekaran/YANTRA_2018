@@ -8,7 +8,9 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :phone_number
       t.string :player_id
       t.string :remarks
+      t.string :language
       t.boolean :isactive, default: true
+      t.boolean :islogged_in, default: false
       t.datetime :deleted_at
       t.references :role, foreign_key: true
       t.references :user_type, foreign_key: true

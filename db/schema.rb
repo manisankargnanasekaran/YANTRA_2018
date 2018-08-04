@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180627055816) do
+ActiveRecord::Schema.define(version: 20180731144549) do
 
   create_table "alarms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "alarm_type"
@@ -276,6 +276,23 @@ ActiveRecord::Schema.define(version: 20180627055816) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.boolean "date_wise", default: false
+    t.boolean "month_wise", default: false
+    t.boolean "shift_wise", default: true
+    t.boolean "operator_wise", default: true
+    t.boolean "hour_wise", default: false
+    t.boolean "program_wise", default: false
+    t.boolean "email_notification", default: false
+    t.boolean "sms", default: false
+    t.boolean "notification", default: false
+    t.bigint "tenant_id"
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tenant_id"], name: "index_settings_on_tenant_id"
+  end
+
   create_table "shifts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "working_time"
     t.integer "no_of_shift"
@@ -317,9 +334,18 @@ ActiveRecord::Schema.define(version: 20180627055816) do
     t.string "pincode"
     t.string "active_by"
     t.boolean "isactive", default: false
+    t.boolean "is_tenant", default: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_auth_logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "auth_token"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_auth_logs_on_user_id"
   end
 
   create_table "user_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -339,7 +365,9 @@ ActiveRecord::Schema.define(version: 20180627055816) do
     t.string "phone_number"
     t.string "player_id"
     t.string "remarks"
+    t.string "language"
     t.boolean "isactive", default: true
+    t.boolean "islogged_in", default: false
     t.datetime "deleted_at"
     t.bigint "role_id"
     t.bigint "user_type_id"
@@ -378,8 +406,10 @@ ActiveRecord::Schema.define(version: 20180627055816) do
   add_foreign_key "reports", "operators"
   add_foreign_key "reports", "shifts"
   add_foreign_key "reports", "tenants"
+  add_foreign_key "settings", "tenants"
   add_foreign_key "shifts", "tenants"
   add_foreign_key "shifttransactions", "shifts"
+  add_foreign_key "user_auth_logs", "users"
   add_foreign_key "users", "roles"
   add_foreign_key "users", "tenants"
   add_foreign_key "users", "user_types"
