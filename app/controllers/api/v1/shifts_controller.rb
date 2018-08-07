@@ -32,7 +32,7 @@ module Api
       # POST /shifts.json
       def create
         @shift = Shift.new(shift_params)
-        @shift.tenant_id = current_tenant.id
+        #@shift.tenant_id = current_tenant.id
           if @shift.save
             render json: {
               message: 'Shift was successfully Created.',
@@ -71,7 +71,7 @@ module Api
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def shift_params
-          params.require(:shift).permit(:working_time, :no_of_shift, :day_start_time, :isactive, :deleted_at, :working_time_dummy, :day_start_time_dummy, :tenant_id)
+          params.require(:shift).permit(:working_time, :no_of_shift, :day_start_time, :isactive, :deleted_at, :working_time_dummy, :day_start_time_dummy)
         end
     end
   end

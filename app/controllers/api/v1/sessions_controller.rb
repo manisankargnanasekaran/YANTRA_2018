@@ -5,7 +5,7 @@ module Api
 	  def register
 	  	@tenant = Tenant.new(tenant_params)
 	      if @tenant.save
-          Setting.create(tenant_id: @tenant.id)
+          Setting.create!#(tenant_id: @tenant.id)
 	        response = { message: 'User created successfully'}
 	        render json: response, status: :created 
 	      else

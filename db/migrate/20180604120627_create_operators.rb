@@ -6,7 +6,7 @@ class CreateOperators < ActiveRecord::Migration[5.1]
       t.string :description
       t.boolean :is_active, default: true
       t.datetime :deleted_at
-      t.references :tenant, foreign_key: true
+      #t.references :tenant, foreign_key: true
 
       t.timestamps
     end

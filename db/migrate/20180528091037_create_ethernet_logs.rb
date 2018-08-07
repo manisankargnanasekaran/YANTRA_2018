@@ -6,7 +6,7 @@ class CreateEthernetLogs < ActiveRecord::Migration[5.1]
       t.boolean :is_active, default: true
       t.datetime :deleted_at
       t.references :machine, foreign_key: true
-      t.references :tenant, foreign_key: true
+      #t.references :tenant, foreign_key: true
 
       t.timestamps
     end

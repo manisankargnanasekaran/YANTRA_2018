@@ -1,6 +1,6 @@
 class Shift < ApplicationRecord
   acts_as_paranoid
-  belongs_to :tenant, -> { with_deleted }
+  #belongs_to :tenant, -> { with_deleted }
   has_many :shifttransactions
 
   def self.current_shift(tenant_id)
@@ -70,6 +70,6 @@ class Shift < ApplicationRecord
   end
 
 end
-#end
+end
 
 

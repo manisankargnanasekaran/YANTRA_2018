@@ -10,7 +10,7 @@ class CreateMachines < ActiveRecord::Migration[5.1]
       t.string :device_id
       t.boolean :isactive, default: true
       t.datetime :deleted_at
-      t.references :tenant, foreign_key: true
+      #t.references :tenant, foreign_key: true
 
       t.timestamps
     end

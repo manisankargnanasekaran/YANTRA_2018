@@ -30,10 +30,8 @@ ActiveRecord::Schema.define(version: 20180731144549) do
     t.string "status"
     t.boolean "is_active", default: true
     t.datetime "deleted_at"
-    t.bigint "tenant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tenant_id"], name: "index_connection_logs_on_tenant_id"
   end
 
   create_table "ethernet_logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -42,11 +40,9 @@ ActiveRecord::Schema.define(version: 20180731144549) do
     t.boolean "is_active", default: true
     t.datetime "deleted_at"
     t.bigint "machine_id"
-    t.bigint "tenant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["machine_id"], name: "index_ethernet_logs_on_machine_id"
-    t.index ["tenant_id"], name: "index_ethernet_logs_on_tenant_id"
   end
 
   create_table "hour_reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -165,10 +161,8 @@ ActiveRecord::Schema.define(version: 20180731144549) do
     t.string "device_id"
     t.boolean "isactive", default: true
     t.datetime "deleted_at"
-    t.bigint "tenant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tenant_id"], name: "index_machines_on_tenant_id"
   end
 
   create_table "operator_allocations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -207,10 +201,8 @@ ActiveRecord::Schema.define(version: 20180731144549) do
     t.string "description"
     t.boolean "is_active", default: true
     t.datetime "deleted_at"
-    t.bigint "tenant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tenant_id"], name: "index_operators_on_tenant_id"
   end
 
   create_table "program_reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -286,11 +278,9 @@ ActiveRecord::Schema.define(version: 20180731144549) do
     t.boolean "email_notification", default: false
     t.boolean "sms", default: false
     t.boolean "notification", default: false
-    t.bigint "tenant_id"
     t.string "updated_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tenant_id"], name: "index_settings_on_tenant_id"
   end
 
   create_table "shifts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -301,10 +291,8 @@ ActiveRecord::Schema.define(version: 20180731144549) do
     t.datetime "deleted_at"
     t.time "working_time_dummy"
     t.time "day_start_time_dummy"
-    t.bigint "tenant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tenant_id"], name: "index_shifts_on_tenant_id"
   end
 
   create_table "shifttransactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -380,9 +368,7 @@ ActiveRecord::Schema.define(version: 20180731144549) do
   end
 
   add_foreign_key "alarms", "machines"
-  add_foreign_key "connection_logs", "tenants"
   add_foreign_key "ethernet_logs", "machines"
-  add_foreign_key "ethernet_logs", "tenants"
   add_foreign_key "hour_reports", "machines"
   add_foreign_key "hour_reports", "operators"
   add_foreign_key "hour_reports", "shifts"
@@ -390,14 +376,12 @@ ActiveRecord::Schema.define(version: 20180731144549) do
   add_foreign_key "machine_daily_logs", "machines"
   add_foreign_key "machine_logs", "machines"
   add_foreign_key "machine_monthly_logs", "machines"
-  add_foreign_key "machines", "tenants"
   add_foreign_key "operator_allocations", "machines"
   add_foreign_key "operator_allocations", "operators"
   add_foreign_key "operator_allocations", "shifttransactions"
   add_foreign_key "operator_allocations", "tenants"
   add_foreign_key "operator_mapping_allocations", "operator_allocations"
   add_foreign_key "operator_mapping_allocations", "operators"
-  add_foreign_key "operators", "tenants"
   add_foreign_key "program_reports", "machines"
   add_foreign_key "program_reports", "operators"
   add_foreign_key "program_reports", "shifts"
@@ -406,8 +390,6 @@ ActiveRecord::Schema.define(version: 20180731144549) do
   add_foreign_key "reports", "operators"
   add_foreign_key "reports", "shifts"
   add_foreign_key "reports", "tenants"
-  add_foreign_key "settings", "tenants"
-  add_foreign_key "shifts", "tenants"
   add_foreign_key "shifttransactions", "shifts"
   add_foreign_key "user_auth_logs", "users"
   add_foreign_key "users", "roles"

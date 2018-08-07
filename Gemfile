@@ -25,6 +25,7 @@ gem 'simple_command'
 gem 'seed_dump'
 gem 'active_model_serializers'
 gem "paranoia", "~> 2.2"
+gem 'apartment'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

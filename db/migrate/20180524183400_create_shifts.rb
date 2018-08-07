@@ -8,7 +8,7 @@ class CreateShifts < ActiveRecord::Migration[5.1]
       t.datetime :deleted_at
       t.time :working_time_dummy
       t.time :day_start_time_dummy
-      t.references :tenant, foreign_key: true
+      #t.references :tenant, foreign_key: true
 
       t.timestamps
     end
